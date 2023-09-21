@@ -18,7 +18,7 @@ def get_k_val(X, y, k):
     
     for class_label in [0,1]:
         # Get the indices of samples belonging to the current class
-        class_indices1 = np.where(d1y == class_label)[0]
+        class_indices1 = np.where(y == class_label)[0]
         
 
         # Randomly select samples_per_class_in_test samples from this class
@@ -40,7 +40,7 @@ def get_k_val(X, y, k):
             
     for i in range(k):
         # Split the data into train and test sets using the selected indices
-        output.append([X[train_indices1[i]], X[test_indices1[i]], y[train_indices1[i]], y[test_indices1[i]]])
+        output.append([X[train_indices1[i]].reset_index(drop = True), X[test_indices1[i]].reset_index(drop = True), y[train_indices1[i]].reset_index(drop = True), y[test_indices1[i]].reset_index(drop = True)])
     
     return output
 
